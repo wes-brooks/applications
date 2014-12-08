@@ -1,0 +1,76 @@
+\begin{thebibliography}{11}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Besag et~al.(1991)Besag, York, and Mollie]{Besag-York-Mollie-1991}
+Julian Besag, Jeremy York, and Annie Mollie.
+\newblock Bayesian image restoration, with two applications in spatial
+  statistics.
+\newblock \emph{Annals of the Institute of Statistical Mathematics},
+  43\penalty0 (1):\penalty0 1--20, 1991.
+
+\bibitem[Fan and Gijbels(1996)]{Fan-Gijbels-1996}
+Jianqing Fan and Irene Gijbels.
+\newblock \emph{Local Polynomial Modeling and its Applications}.
+\newblock Chapman and Hall, London, 1996.
+
+\bibitem[Fan and Zhang(1999)]{Fan-Zhang-1999}
+Jianqing Fan and Wenyang Zhang.
+\newblock Statistical estimation in varying coefficient models.
+\newblock \emph{Annals of Statistics}, 27\penalty0 (5):\penalty0 1491--1518,
+  1999.
+
+\bibitem[Hastie and Tibshirani(1993)]{Hastie-Tibshirani-1993}
+Trevor Hastie and Robert Tibshirani.
+\newblock Varying-coefficient models.
+\newblock \emph{Journal of the Royal Statistical Society Series B}, 55\penalty0
+  (4):\penalty0 757--796, 1993.
+
+\bibitem[Hodges and Reich(2011)]{Hodges-Reich-2010}
+James~S. Hodges and Brian~J. Reich.
+\newblock Adding spatially-correlated errors can mess up the fixed effect you
+  love.
+\newblock \emph{The American Statistician}, 64\penalty0 (4):\penalty0 325--334,
+  2011.
+
+\bibitem[Knight and Fu(2000)]{Knight-Fu-2000}
+Keith Knight and Wenjiang Fu.
+\newblock Asymptotics for {L}asso-type estimators.
+\newblock \emph{Annals of Statistics}, 28\penalty0 (5):\penalty0 1356--1378,
+  2000.
+
+\bibitem[Paciorek(2010)]{Paciorek-2010}
+Christopher~J. Paciorek.
+\newblock The importance of scale for spatial-confounding bias and precision of
+  spatial regression estimators.
+\newblock \emph{Statistical Science}, 25\penalty0 (1):\penalty0 107--125, 2010.
+
+\bibitem[Wang and Leng(2008)]{Wang-Leng-2008}
+Hansheng Wang and Chenlei Leng.
+\newblock A note on adaptive group {L}asso.
+\newblock \emph{Computational Statistics and Data Analysis}, 52:\penalty0
+  5277--5286, 2008.
+
+\bibitem[Wang and Xia(2009)]{Wang-Xia-2009}
+Hansheng Wang and Yingcun Xia.
+\newblock Shrinkage estimation of the varying coefficient model.
+\newblock \emph{Journal of the American Statistical Association}, 104:\penalty0
+  747--757, 2009.
+
+\bibitem[Wang et~al.(2008)Wang, Li, and Huang]{Wang-Li-Huang-2008}
+Lifeng Wang, Hongzhe Li, and Jianhua~Z. Huang.
+\newblock Variable selection in nonparametric varying-coefficient models for
+  analysis of repeated measurements.
+\newblock \emph{Journal of the American Statistical Association}, 103\penalty0
+  (484):\penalty0 1556--1569, 2008.
+
+\bibitem[Wei et~al.(2011)Wei, Huang, and Li]{Wei-Huang-Li-2011}
+Fengrong Wei, Jian Huang, and Hongzhe Li.
+\newblock Variable selection and estimation in high-dimensional
+  varying-coefficient models.
+\newblock \emph{Statistica Sinica}, 21\penalty0 (4):\penalty0 1515--1540, 2011.
+
+\end{thebibliography}
