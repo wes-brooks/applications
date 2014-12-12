@@ -1,5 +1,5 @@
 % !TeX root = RJwrapper.tex
-\title{The \pkg{lagr} Package: Local Adaptive Grouped Regularization in R}
+\title{\pkg{lagr}: Local Adaptive Grouped Regularization in R}
 \author{by Wesley Brooks}
 
 \maketitle
@@ -8,27 +8,48 @@
 An abstract of less than 150 words.
 }
 
-A basic fact of varying coefficient regression (VCR) models is that the coefficients vary over the model’s domain. It is natural, then, to allow that a coefficient function may be nonzero in part of the domain and exactly zero elsewhere. To date, methods of estimating VCR models could allow only global variable selection, where a variable is either in or out of the model over the entire domain. The method of local adaptive grouped regularization (LAGR) is an estimation method for VCR models that allows for local variable selection \citep{Brooks-Zhu-Lu-2014}.
+
+
+Whereas the coefficients in traditional linear regression are scalar constants, the coefficients in a varying coefficient regression (VCR) model are functions - often smooth functions - of some effect-modifying parameter \citep{Cleveland-Grosse-1991,Hastie-Tibshirani-1993}. A basic fact of varying coefficient regression (VCR) models is that the coefficients vary over the model's domain. It is natural, then, to allow that a coefficient function may be nonzero in part of the domain and exactly zero elsewhere. To date, methods of estimating VCR models could allow only global variable selection, where a variable is either in or out of the model over the entire domain. The method of local adaptive grouped regularization (LAGR) is an estimation method for VCR models that allows for local variable selection \citep{Brooks-Zhu-Lu-2014}.
 
 Some R packages that estimate VCR models are \pkg{spgwr}, \pkg{mgcv}, \pkg{np}, \pkg{dlm}. 
  
-\section{Method}
-\subsection{Local polynomial regression}
-Models estimated by LAGR are of the local polynomial regression type, which is a form of kernel smoothing. 
+This paper introduces \pkg{lagr}, an R package for estimating a VCR model via LAGR. 
 
-\subsection{Penalized local log likelihood}
-Each local model is fit by maximum penalized local likelihood. The penalized local log likelihood function is
-\begin{equation}\label{eq:df}
-\ell_i = \sum_{j=1}^n w_{ij} \log{\mathcal{L}(\bm{\beta}_i, Y_j)} + \lambda_i \sum_{k=1}^p \phi_k \|\bm{\beta}_k \|
+\section{Method}
+\subsection{Varying coefficient regression}
+
+
+\subsection{Local polynomial regression}
+Models estimated by LAGR are of the local polynomial regression type, which is a form of kernel smoothing. At each estimation location $s_0$, the coefficient functions are approximated by Taylor's expansion as locally linear functions of the effect-modifying parameter
+\begin{equation}
+\bm{\beta}(s) = \bm{\beta}(s_0) + \nabla \bm{\beta}(s_0) (s - s_0) + o(|s-s_0|)
 \end{equation}
-where …
+and because the approximation is local, $|s-s_0|$ is small.
+
+Kernel weights $K_h(|s-s_0|) = h^{-q} K(|s-s_0|)$ are calculated according to a kernel function $K(\cdot)$ that weights nearby observations more heavily than distant ones. The popular Epanechnikov kernel is defined as \citep{Samiuddin-el-Sayyad-1990}:
+\begin{equation}
+K(x) = (3/4) (1-x^2) \text{ if } x<1, \text{ and } 0 \text{ otherwise}.
+\end{equation}
+
+\subsection{Local log likelihood}
+Each local model is fit by maximum penalized local likelihood. The penalized local log likelihood function is
+\begin{equation}
+\ell_i = \sum_{j=1}^n w_{ij} \log{L(\bm{\beta}_i, Y_j)} 
+\end{equation}
+
+\subsubsection{Regularization}
+\begin{equation}
+\ell_i = \sum_{j=1}^n w_{ij} \log{L(\bm{\beta}_i, Y_j)} + \lambda_i \sum_{k=1}^p \phi_k \| \bm{\beta}_k \|
+\end{equation}
+
 
 \subsubsection{Local degrees of freedom}
-In the context of Stein’s unbiased risk estimation, the degrees of freedom used in fitting a model are defined as 
+In the context of Stein's unbiased risk estimation, the degrees of freedom used in fitting a model are defined as 
 \begin{equation}
 df = \sum_{i=1}^n \frac{{\rm cov}(y_i, \hat{y}_i)}{\sigma^2}
 \end{equation}
-where $y_i$ is the observed value of the $i$th response, $\hat{y}_i$ is the corresponding fitted value, and $\sigma^2$ is the exponential family dispersion parameter \citep{Efron-1986}. The degrees of freedom for an adaptive group lasso estimate are … \citep{Vaiter-Deledalle-Peyre-Fadili-Dossal-2012}.
+where $y_i$ is the observed value of the $i$th response, $\hat{y}_i$ is the corresponding fitted value, and $\sigma^2$ is the exponential family dispersion parameter \citep{Efron-1986}. The degrees of freedom for an adaptive group lasso estimate \citep{Vaiter-Deledalle-Peyre-Fadili-Dossal-2012}.
 
 \subsubsection{Model averaging}
 A weighted average of the candidate models is used to acknowledge uncertainty in the variable selection. 
@@ -51,7 +72,7 @@ For estimating the bandwidth, each observation is estimated with a local model. 
 \section{Code, explained}
 
 \subsection{Package}
-The R package \pkg{lagr} (\url{https://github.com/wrbrooks/lagr})  provides functions for estimation, inference, and plotting in a model estimated by LAGR. Its primary functions are \code{lagr} and \code{lagr.tune}. The \code{lagr} function estimates a model by LAGR, while the \code{lagr.tune} function estimates profiles the bandwidth parameter with respect to a model selection criterion (AIC, BIC, or GCV).
+The R package \pkg{lagr} (\url{https://github.com/wrbrooks/lagr})  . Its primary functions are \code{lagr} and \code{lagr.tune}. The \code{lagr} function estimates a model by LAGR, while the \code{lagr.tune} function estimates profiles the bandwidth parameter with respect to a model selection criterion (AIC, BIC, or GCV).
 
 \subsection{Estimation of a model}
 Estimation is carried out by blockwise coordinate descent. This is an iterative process and carrying out the coordinate descent algorithm in a compiled C++ library is considerably faster than doing so in R. The \pkg{Rcpp11} is used to integrate C++ code into the \pkg{lagr} package.
@@ -59,17 +80,56 @@ Estimation is carried out by blockwise coordinate descent. This is an iterative 
 The model weighting is a constrained quadratic programming problem. The solution is found via the \pkg{quadprog} package.
 
 \subsubsection{Response family}
-R provides several \code{family} objects representing exponential family distributions (e.g., \code{gaussian()}, \code{binomial()}, \code{poisson()}). In the \pkg{lagr} package, these objects supply the link and variance functions for fitting the local GLM models. Because the \pkg{Rcpp11} package provides “seamless R and C++ integration”, we can use objects of type \code{function} within the C++ code that can represent either R or C++ functions. This capability allows us to call the \code{link()} and \code{varfun()} functions of any \code{family} object. As a result, the user can write their own \code{family} object in either R or C/C++ and use it as the response distribution of a VCR model estimated by LAGR.
-
-\subsection{Bandwidth estimation}
-Bandwidth profiling in the \code{lagr.tune} function is carried out using the \code{optim} function. 
+R provides several \code{family} objects representing exponential family distributions (e.g., \code{gaussian()}, \code{binomial()}, \code{poisson()}). In the \pkg{lagr} package, these objects supply the link and variance functions for fitting the local GLM models. Because the \pkg{Rcpp11} package provides seamless R and C++ integration we can use objects of type \code{function} within the C++ code that can represent either R or C++ functions. This capability allows us to call the \code{link()} and \code{varfun()} functions of any \code{family} object. As a result, the user can write their own \code{family} object in either R or C/C++ and use it as the response distribution of a VCR model estimated by LAGR.
 
 \subsection{Plotting}
-The function \code{lagr.plot.shapefile} plots the inputs or outputs of a \code{lagr.model} object, provided that the data was specified via an \code{sp} object (see package \pkg{sp}).
+The function \code{lagr.plot} is used to plot a \code{lagr} object. In the case of a one-dimensional location parameter (e.g., time), the function produces line plots. If the location parameter is two-dimensional, then the plotting behavior depends on how the data was specified. If data was provided as a \code{SpatialPolygonDataFrame} (defined in package \pkg{sp}), then the spatial polygons are used to produce a choropleth (Figure XX). Otherwise the estimation locations are used to generate a Voronoi diagram \citep{voronoi}.
+
+The content of the plot depends on two parameters. The parameter \code{type} is one of \code{raw}, \code{coef}, or \code{is.zero}; these respectively output the raw covariate, the estimated coefficient, or the confidence that a coefficient is locally zero. The parameter \code{target} indicates which covariate is plotted.
 
 \section{Examples}
-Wisconsin poverty data?
+\subsection{Boston house price data}
+Here is a model for how some demographic covariates are related to house prices in Boston, MA, based on data from the 1970 U.S. Census \citep{Pace-Gilley-1997}. The data is available in the R package \pkg{spgwr}; the variables are listed in Table \ref{table:boston-data}.
 
+\begin{table}[h]
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+	\begin{tabular}{ll}
+	Name & Description \\
+	\hline
+	LON, LAT & Longitude and latitude of each county's center of mass \\
+	MEDV & Median home price\\
+	CRIM & Per-capita crime rate \\
+	RM & Mean number of rooms per dwelling \\
+	RAD & An index of access to radial roads \\
+	TAX & Property tax per USD$10,000$ of value\\
+	LSTAT & Percentage of residents considered ``Lower status''
+	\end{tabular}
+	\end{adjustbox}
+	\caption{Listing of the variables in the Boston house price data set. The response for our model is MEDV and the coordinates are given by LON and LAT.
+	\label{table:boston-data}}
+\end{table}
+
+Here, we import the data and estimate the bandwidth by AIC, then fit a model using the estimated bandwidth:
+
+
+\begin{example}
+library(lagr)
+data(boston)
+
+bw = lagr(MEDV~CRIM+RM+RAD+TAX+LSTAT, data=boston, bwselect.method="AIC",
+  longlat=TRUE, bw.type="knn", kernel=epanechnikov,
+  varselect.method="wAIC")
+model = lagr(MEDV~CRIM+RM+RAD+TAX+LSTAT, data=boston, bw=bw,
+  longlat=TRUE, kernel=epanechnikov, varselect.method="wAIC")
+
+summary(model)
+plot(model, target="PctFB", type="coef", id="ID")
+
+\end{example}
+
+
+\section{Summary}
 
 \bibliography{references}
 
@@ -78,3 +138,4 @@ Wisconsin poverty data?
   1300 University Ave. Madison, WI 53706\\
   USA}
 \email{wrbrooks@uwalumni.com}
+

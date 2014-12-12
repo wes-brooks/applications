@@ -1,0 +1,117 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,array}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+%% load any required packages here
+%\usepackage{RJournal}
+\usepackage{natbib}
+\usepackage{bm}
+\usepackage{setspace}
+\doublespacing
+\setcitestyle{round}
+
+%Defining commands:
+\newcommand{\pkg}[1]{\textbf{#1}}
+\newcommand{\code}[1]{{\tt #1}}
+\newcommand{\url}[1]{{\tt #1}}
+
+% !TeX root = RJwrapper.tex
+\title{\pkg{lagr}: Local Adaptive Grouped Regularization in R}
+\author{by Wesley Brooks}
+\date{}      
+
+\address{Wesley Brooks\\
+  Department of Statistics, University of Wisconsin-Madison\\
+  1300 University Ave. Madison, WI 53706\\
+  USA}
+\email{wrbrooks@uwalumni.com}
+
+
+                                     % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\abstract{
+An abstract of less than 150 words.
+}
+
+\section{Introduction}
+%\subsection{}
+
+
+
+A basic fact of varying coefficient regression (VCR) models is that the coefficients vary over the model's domain. It is natural, then, to allow that a coefficient function may be nonzero in part of the domain and exactly zero elsewhere. To date, methods of estimating VCR models could allow only global variable selection, where a variable is either in or out of the model over the entire domain. The method of local adaptive grouped regularization (LAGR) is an estimation method for VCR models that allows for local variable selection \citep{Brooks-Zhu-Lu-2014}.
+
+Some R packages that estimate VCR models are \pkg{spgwr}, \pkg{mgcv}, \pkg{np}, \pkg{dlm}. 
+ 
+\section{Method}
+\subsection{Local polynomial regression}
+Models estimated by LAGR are of the local polynomial regression type, which is a form of kernel smoothing. 
+
+\subsection{Penalized local log likelihood}
+Each local model is fit by maximum penalized local likelihood. The penalized local log likelihood function is
+\begin{equation}\label{eq:df}
+\ell_i = \sum_{j=1}^n w_{ij} \log{\mathcal{L}(\bm{\beta}_i, Y_j)} + \lambda_i \sum_{k=1}^p \phi_k \|\bm{\beta}_k \|
+\end{equation}
+where ‚
+
+\subsubsection{Local degrees of freedom}
+In the context of Stein's unbiased risk estimation, the degrees of freedom used in fitting a model are defined as 
+\begin{equation}
+df = \sum_{i=1}^n \frac{{\rm cov}(y_i, \hat{y}_i)}{\sigma^2}
+\end{equation}
+where $y_i$ is the observed value of the $i$th response, $\hat{y}_i$ is the corresponding fitted value, and $\sigma^2$ is the exponential family dispersion parameter \citep{Efron-1986}. The degrees of freedom for an adaptive group lasso estimate are ‚ \citep{Vaiter-Deledalle-Peyre-Fadili-Dossal-2012}.
+
+\subsubsection{Model averaging}
+A weighted average of the candidate models is used to acknowledge uncertainty in the variable selection. 
+\begin{align}
+\hat{g} &= \arg\!\min w_j g_j \\
+w_j &\geq 0 \forall j \in 1, \dots, m
+\end{align}
+
+\subsection{Bandwidth parameter}
+In order to estimate a VCR model by a local polynomial method like LAGR, we need to set the bandwidth parameter. In the \code{lagr} function, the bandwidth can be specified in terms of distance or $k$-nearest neighbors. The $k$-nearest neighbors method is a type of adaptive bandwidth that specifies a value for $\sum_{j=1}^n w_{ij} / n$, while the distance method specifies an identical $h$ .
+
+To estimate the bandwidth parameter, we profile it with our favorite model selection criterion. The optimal value of the bandwidth parameter is the one that minimizes the selection criterion. However, selecting this bandwidth and treating it as known truth would introduce model-selection bias \citep{model-selection-bias-refs}. We average over the implicit distribution of the bandwidth parameter based on the profile AIC that was calculated in 
+
+\subsubsection{Total degrees of freedom}
+In the typical local polynomial regression model, the degrees of freedom are calculated as the trace of the projection matrix. Because LAGR is an $\mathcal{L}_1$ regularization method, though, it is nonlinear and thus generates no projection matrix. Recall the definition of degrees of freedom (\ref{eq:df}).
+
+For estimating the bandwidth, each observation is estimated with a local model. Only observations colocated with the local model are affected by the local fit, so the total degrees of freedom are the sum of the colocated degrees of freedom from each local model. An unbiased(?) approximation of the colocated degrees of freedom is $df_i / sum_{j=1}^n w_{ij}$.
+
+
+\section{Code, explained}
+
+\subsection{Package}
+The R package \pkg{lagr} (\url{https://github.com/wrbrooks/lagr})  provides functions for estimation, inference, and plotting in a model estimated by LAGR. Its primary functions are \code{lagr} and \code{lagr.tune}. The \code{lagr} function estimates a model by LAGR, while the \code{lagr.tune} function estimates profiles the bandwidth parameter with respect to a model selection criterion (AIC, BIC, or GCV).
+
+\subsection{Estimation of a model}
+Estimation is carried out by blockwise coordinate descent. This is an iterative process and carrying out the coordinate descent algorithm in a compiled C++ library is considerably faster than doing so in R. The \pkg{Rcpp11} is used to integrate C++ code into the \pkg{lagr} package.
+
+The model weighting is a constrained quadratic programming problem. The solution is found via the \pkg{quadprog} package.
+
+\subsubsection{Response family}
+R provides several \code{family} objects representing exponential family distributions (e.g., \code{gaussian()}, \code{binomial()}, \code{poisson()}). In the \pkg{lagr} package, these objects supply the link and variance functions for fitting the local GLM models. Because the \pkg{Rcpp11} package provides ‚Äúseamless R and C++ integration‚Äù, we can use objects of type \code{function} within the C++ code that can represent either R or C++ functions. This capability allows us to call the \code{link()} and \code{varfun()} functions of any \code{family} object. As a result, the user can write their own \code{family} object in either R or C/C++ and use it as the response distribution of a VCR model estimated by LAGR.
+
+\subsection{Bandwidth estimation}
+Bandwidth profiling in the \code{lagr.tune} function is carried out using the \code{optim} function. 
+
+\subsection{Plotting}
+The function \code{lagr.plot.shapefile} plots the inputs or outputs of a \code{lagr.model} object, provided that the data was specified via an \code{sp} object (see package \pkg{sp}).
+
+\section{Examples}
+Wisconsin poverty data?
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+
+
+\end{document}  

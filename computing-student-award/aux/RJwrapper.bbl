@@ -1,0 +1,33 @@
+\begin{thebibliography}{4}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Brooks et~al.(2014)Brooks, Zhu, and Lu]{Brooks-Zhu-Lu-2014}
+W.~Brooks, J.~Zhu, and Z.~Lu.
+\newblock Local adaptive grouped regularization and its oracle properties for
+  varying coefficient regression.
+\newblock In prep, 2014.
+
+\bibitem[Efron(1986)]{Efron-1986}
+B.~Efron.
+\newblock How biased is the apparent error rate of a prediction rule?
+\newblock \emph{Journal of the American Statistical Association}, pages
+  461--470, 1986.
+
+\bibitem[Fotheringham et~al.(2002)Fotheringham, Brunsdon, and
+  Charlton]{Fotheringham-Brundson-Charlton-2002}
+A.~Fotheringham, C.~Brunsdon, and M.~Charlton.
+\newblock \emph{Geographically Weighted Regression: The Analysis of Spatially
+  Varying Relationships}.
+\newblock Wiley, West Sussex, England, 2002.
+
+\bibitem[Vaiter et~al.(2012)Vaiter, Deledalle, Peyre, Fadili, and
+  Dossal]{Vaiter-Deledalle-Peyre-Fadili-Dossal-2012}
+S.~Vaiter, C.~Deledalle, G.~Peyre, J.~Fadili, and C.~Dossal.
+\newblock The degrees of freedom of the group lasso for a general design.
+\newblock \emph{arXiv}, 2012.
+
+\end{thebibliography}
