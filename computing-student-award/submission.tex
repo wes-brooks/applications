@@ -18,25 +18,35 @@ This paper introduces \pkg{lagr}, an R package for estimating a VCR model via LA
 
 \section{Method}
 \subsection{Varying coefficient regression}
-
+The response $Y(s)$, covariates $\bm{X}(s)$, and coefficients $\bm{\beta}(s)$ in a VCR model are indexed by the location parameter $s$. Assume $n$ observations of the response and the covariates at locations $s_1, \dots, s_n$ and let $y_i = y(s_i)$, $\bm{x}_i = \bm{x}(s_i)$, and $\bm{\beta}_i = \bm{\beta}(s_i)$. The generalized linear model with varying coefficients is written
+\begin{align}
+	E[y(s)|\bm{x}(s)] &= \mu(s)\\
+	\eta(s) &= g(\mu(s)) = \bm{x}'(s) \bm{\beta}(s)\\
+	\text{var}[y(s)|\bm{x}(s)] &= \phi V(\mu(s))
+\end{align}
+where $g(\cdot)$, $V(\cdot)$, and $\phi$ are, respectively, the link function, variance function, and dispersion parameter of the response family. For simplicity of notation, assume the canonical link function \citep{McCullagh-Nelder-1989}.
 
 \subsection{Local polynomial regression}
-Models estimated by LAGR are of the local polynomial regression type, which is a form of kernel smoothing. At each estimation location $s_0$, the coefficient functions are approximated by Taylor's expansion as locally linear functions of the effect-modifying parameter
+Local adaptive grouped regularization is in the class of local polynomial regression methods. At each estimation location $s_i$, the coefficient functions are approximated by Taylor's expansion as locally linear functions of the location parameter
 \begin{equation}
-\bm{\beta}(s) = \bm{\beta}(s_0) + \nabla \bm{\beta}(s_0) (s - s_0) + o(|s-s_0|)
+\bm{\beta}(s) = \bm{\beta}(s_i) + \nabla \bm{\beta}(s_i) (s - s_i) + o(|s-s_i|)
 \end{equation}
-and because the approximation is local, $|s-s_0|$ is small.
+and because the approximation is local, $|s-s_i|$ is small.
 
-Kernel weights $K_h(|s-s_0|) = h^{-q} K(|s-s_0|)$ are calculated according to a kernel function $K(\cdot)$ that weights nearby observations more heavily than distant ones. The popular Epanechnikov kernel is defined as \citep{Samiuddin-el-Sayyad-1990}:
+Weights are calculated according to a kernel function that gives more weight to nearby observations than to distant ones. The popular Epanechnikov kernel is defined as \citep{Samiuddin-el-Sayyad-1990}:
 \begin{equation}
 K(x) = (3/4) (1-x^2) \text{ if } x<1, \text{ and } 0 \text{ otherwise}.
 \end{equation}
 
-\subsection{Local log likelihood}
-Each local model is fit by maximum penalized local likelihood. The penalized local log likelihood function is
-\begin{equation}
-\ell_i = \sum_{j=1}^n w_{ij} \log{L(\bm{\beta}_i, Y_j)} 
-\end{equation}
+Let $q$ be the dimension of the location parameter (e.g., $q=1$ for a coefficients that vary with time). For estimating the coefficient functions at location $s_i$ with kernel function $K(\cdot)$ and bandwidth $h$, the weights are $w_{ij} = h^{-q} K(|s_i-s_j|)$ for $j = 1, \dots, n$. 
+
+\subsection{Local penalized log likelihood}
+Coefficients are estimated locally by maximizing the penalized local likelihood $\mathcal{J}(\cdot)$. 
+\begin{align}
+\mathcal{J}(\bm{\beta}_i) &= \ell(\bm{\beta}_i) - \mathcal{P}(\bm{\beta}_i) \\
+&= \sum_{j=1}^n w_{ij} Q(\bm{\beta}_i, Y_j) + \sum_{k=1}^p \phi_k \| \bm{\beta}_{ik} \|
+\end{align}
+
 
 \subsubsection{Regularization}
 \begin{equation}
@@ -102,7 +112,7 @@ Here is a model for how some demographic covariates are related to house prices 
 	CRIM & Per-capita crime rate \\
 	RM & Mean number of rooms per dwelling \\
 	RAD & An index of access to radial roads \\
-	TAX & Property tax per USD$10,000$ of value\\
+	TAX & Property tax per $\$10,000$ of value\\
 	LSTAT & Percentage of residents considered ``Lower status''
 	\end{tabular}
 	\end{adjustbox}
@@ -117,14 +127,14 @@ Here, we import the data and estimate the bandwidth by AIC, then fit a model usi
 library(lagr)
 data(boston)
 
-bw = lagr(MEDV~CRIM+RM+RAD+TAX+LSTAT, data=boston, bwselect.method="AIC",
-  longlat=TRUE, bw.type="knn", kernel=epanechnikov,
-  varselect.method="wAIC")
+bw = lagr(MEDV~CRIM+RM+RAD+TAX+LSTAT, data=boston,
+    bwselect.method="AIC", longlat=TRUE, bw.type="knn",
+    kernel=epanechnikov, varselect.method="wAIC")
 model = lagr(MEDV~CRIM+RM+RAD+TAX+LSTAT, data=boston, bw=bw,
-  longlat=TRUE, kernel=epanechnikov, varselect.method="wAIC")
+    longlat=TRUE, kernel=epanechnikov, varselect.method="wAIC")
 
 summary(model)
-plot(model, target="PctFB", type="coef", id="ID")
+plot(model, target="RM", type="coef", id="ID")
 
 \end{example}
 
