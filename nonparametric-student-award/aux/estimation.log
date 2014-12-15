@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.31)  14 DEC 2014 18:25
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.1.2)  15 DEC 2014 14:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -235,11 +235,11 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(/usr/local/texlive/2013/../texmf-local/tex/latex/local/undertilde.sty
+(/usr/local/texlive/2013/../texmf-local/tex/latex/local/undertilde/undertilde.s
+ty
 Package: undertilde 2000/08/08 v1.0 Tilde under a math object
 \knuthian@fdfive=\skip53
-)
-(/usr/local/texlive/2013/texmf-dist/tex/latex/setspace/setspace.sty
+) (/usr/local/texlive/2013/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
 (/usr/local/texlive/2013/texmf-dist/tex/latex/esint/esint.sty
@@ -283,11 +283,7 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 \c@thm=\count114
 \c@lem=\count115
 
-(aux/estimation.aux
-
-LaTeX Warning: Label `eq:local-quasi-likelihood' multiply defined.
-
-)
+(aux/estimation.aux)
 \openout1 = `estimation.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
@@ -302,7 +298,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
- (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
+
+(/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count116
 \scratchdimen=\dimen140
@@ -393,21 +390,21 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 81.
+LaTeX Font Info:    Try loading font information for U+msa on input line 65.
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 81.
+LaTeX Font Info:    Try loading font information for U+msb on input line 65.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+esint on input line 81.
+LaTeX Font Info:    Try loading font information for U+esint on input line 65.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/esint/uesint.fd
 File: uesint.fd 
 )
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 81.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 65.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
@@ -415,127 +412,65 @@ File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 
 
 {/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-
-Overfull \hbox (40.31226pt too wide) in paragraph at lines 174--176
-\T1/cmr/m/n/12 ac-tions be-tween the co-vari-ates and the lo-ca-tion pa-ram-e-t
-er. Let-ting $\OML/cmm/b/it/12 Z\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s\OT1/cmr/m/n
-/12 ) = []$
- []
-
-[4] [5]
-
-LaTeX Warning: Reference `eq:zeta-hat' on page 6 undefined on input line 232.
-
-[6]
-
-LaTeX Warning: Reference `eq:local-sum-of-squares' on page 7 undefined on input
- line 251.
-
-
-LaTeX Warning: Reference `eq:zeta-hat' on page 7 undefined on input line 259.
-
-
-Overfull \hbox (28.18492pt too wide) in paragraph at lines 250--260
-[]\T1/cmr/m/n/12 where $\OMS/cmsy/m/n/12 S []$ \T1/cmr/m/n/12 is the lo-cally w
-eighted least squares de-fined in ([]), $\OMS/cmsy/m/n/12 P [] \OT1/cmr/m/n/12 
-= [][] \OML/cmm/m/it/12 ^^^[]\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 s\OT1/cmr/m/n/12
- )\OMS/cmsy/m/n/12 k\OML/cmm/b/it/12 ^^P[]\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 s\O
-T1/cmr/m/n/12 )\OMS/cmsy/m/n/12 k$
- []
-
-[7] [8] [9]
-
-LaTeX Warning: Reference `theorem:normality' on page 10 undefined on input line
- 389.
-
-
-LaTeX Warning: Reference `theorem:selection' on page 10 undefined on input line
- 393.
-
-
-LaTeX Warning: Reference `theorem:normality' on page 10 undefined on input line
- 400.
-
-
-LaTeX Warning: Reference `theorem:selection' on page 10 undefined on input line
- 403.
-
-
-LaTeX Warning: Reference `theorem:normality' on page 10 undefined on input line
- 406.
-
-
-LaTeX Warning: Reference `theorem:selection' on page 10 undefined on input line
- 407.
-
-[10] [11] <figure/boston-plots.pdf, id=61, 578.16pt x 650.43pt>
+ [4] [5]
+[6] [7] <figure/boston-plots.pdf, id=46, 578.16pt x 650.43pt>
 File: figure/boston-plots.pdf Graphic file (type pdf)
 
 <use figure/boston-plots.pdf>
-Package pdftex.def Info: figure/boston-plots.pdf used on input line 450.
+Package pdftex.def Info: figure/boston-plots.pdf used on input line 317.
 (pdftex.def)             Requested size: 469.75499pt x 528.47307pt.
- [12] [13 <./figure/boston-plots.pdf>] [14]
-
-LaTeX Warning: Reference `eq:local-log-likelihood' on page 15 undefined on inpu
-t line 535.
-
-[15] [16] [17] [18] [19] [20
-
-] [21]
-Overfull \hbox (54.96866pt too wide) in paragraph at lines 898--904
+ [8] [9 <./figure/boston-plots.pdf>]
+(aux/estimation.bbl [10]) [11] [12] [13]
+Overfull \hbox (54.96866pt too wide) in paragraph at lines 464--470
 \T1/cmr/m/n/12 We ob-serve that (A.2[]) im-plies that $\OML/cmm/m/it/12 n[] []
 [] \OMS/cmsy/m/n/12 ! \OT1/cmr/m/n/12 0$\T1/cmr/m/n/12 , and since $\OML/cmm/m/
 it/12 E [] < E [] \OMS/cmsy/m/n/12 !
  []
 
-[22] [23] (aux/estimation.aux)
+[14]
+Overfull \hbox (22.1004pt too wide) detected at line 502
+ []$[]  \OML/cmm/m/it/12 E [] \OT1/cmr/m/n/12 = [] + \OML/cmm/m/it/12 o[] []  $
+ 
+ []
 
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+[15] (aux/estimation.aux) ) 
 Here is how much of TeX's memory you used:
- 4290 strings out of 493308
- 57011 string characters out of 6137815
- 128762 words of memory out of 5000000
- 7605 multiletter control sequences out of 15000+600000
- 24654 words of font info for 78 fonts, out of 8000000 for 9000
+ 4239 strings out of 493308
+ 55916 string characters out of 6137817
+ 126869 words of memory out of 5000000
+ 7552 multiletter control sequences out of 15000+600000
+ 24341 words of font info for 77 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,18n,34p,1141b,270s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
-</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
-/usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
-usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
-sr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></us
-r/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/
-local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/lo
-cal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/lo
-cal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></us
-r/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
-local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
-cal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local
-/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/te
-xlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
-live/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texli
-ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive
-/2013/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb></usr/local/texlive
-/2013/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/tex
-live/2013/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texli
-ve/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive
-/2013/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2
-013/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/201
-3/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2013/
-texmf-dist/fonts/type1/public/cm-super/sfti0700.pfb></usr/local/texlive/2013/te
-xmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2013/texm
-f-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2013/texmf-
-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/2013/texmf-di
-st/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on aux/estimation.pdf (23 pages, 1592614 bytes).
+ 38i,18n,34p,711b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/
+cm-super/cm-super-t1.enc}</usr/local/texlive/2013/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmex10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmib10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr12.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr6.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r8.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/esint-type1/esint10.
+pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/symbols/msb
+m10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfbx120
+0.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm0800.
+pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pf
+b></usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+</usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></
+usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfti0700.pfb></us
+r/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/
+local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/lo
+cal/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on aux/estimation.pdf (15 pages, 1534565 bytes).
 PDF statistics:
- 200 PDF objects out of 1000 (max. 8388607)
- 139 compressed objects within 2 object streams
+ 163 PDF objects out of 1000 (max. 8388607)
+ 113 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
