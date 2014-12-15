@@ -2,12 +2,11 @@
 \BOOKMARK [1][-]{section.2.1}{Method}{section*.1}% 2
 \BOOKMARK [2][-]{subsection.2.1.1}{Varying coefficient regression}{section.2.1}% 3
 \BOOKMARK [2][-]{subsection.2.1.2}{Local polynomial regression}{section.2.1}% 4
-\BOOKMARK [2][-]{subsection.2.1.3}{Local penalized log likelihood}{section.2.1}% 5
-\BOOKMARK [2][-]{subsection.2.1.4}{Bandwidth parameter}{section.2.1}% 6
-\BOOKMARK [1][-]{section.2.2}{Code, explained}{section*.1}% 7
-\BOOKMARK [2][-]{subsection.2.2.1}{Package}{section.2.2}% 8
-\BOOKMARK [2][-]{subsection.2.2.2}{Estimation of a model}{section.2.2}% 9
-\BOOKMARK [2][-]{subsection.2.2.3}{Plotting}{section.2.2}% 10
-\BOOKMARK [1][-]{section.2.3}{Examples}{section*.1}% 11
-\BOOKMARK [2][-]{subsection.2.3.1}{Boston house price data}{section.2.3}% 12
-\BOOKMARK [1][-]{section.2.4}{Summary}{section*.1}% 13
+\BOOKMARK [2][-]{subsection.2.1.3}{Penalized local quasi-likelihood}{section.2.1}% 5
+\BOOKMARK [1][-]{section.2.2}{Package}{section*.1}% 6
+\BOOKMARK [2][-]{subsection.2.2.1}{Coefficient estimation}{section.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.2.2}{Bandwidth parameter estimation}{section.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.3}{Response family}{section.2.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.4}{Plotting}{section.2.2}% 10
+\BOOKMARK [1][-]{section.2.3}{Example - Georgia educational attainment data}{section*.1}% 11
+\BOOKMARK [1][-]{section.2.4}{Summary}{section*.1}% 12

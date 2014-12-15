@@ -2,11 +2,11 @@
 
 mkdir -p aux
 
-pdflatex -output-directory=aux entry 
-biblatex -output-directory=aux entry 
-pdflatex -output-directory=aux entry 
-pdflatex -output-directory=aux entry 
+pdflatex -output-directory=aux estimation 
+bibtex aux/estimation 
+pdflatex -output-directory=aux estimation 
+pdflatex -output-directory=aux estimation 
 
-mv aux/entry.pdf ./
+mv aux/estimation.pdf ./submission.pdf
 
 

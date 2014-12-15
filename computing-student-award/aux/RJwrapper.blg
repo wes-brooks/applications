@@ -3,46 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: aux/RJwrapper.aux
 The style file: abbrvnat.bst
 Database file #1: references.bib
-Warning--I didn't find a database entry for "model-selection-bias-refs"
-You've used 4 entries,
+You've used 7 entries,
             2773 wiz_defined-function locations,
-            618 strings with 5399 characters,
-and the built_in function-call counts, 1794 in all, are:
-= -- 150
-> -- 118
-< -- 2
-+ -- 40
-- -- 36
-* -- 139
-:= -- 290
-add.period$ -- 12
-call.type$ -- 4
-change.case$ -- 23
-chr.to.int$ -- 4
-cite$ -- 8
-duplicate$ -- 84
-empty$ -- 130
-format.name$ -- 40
-if$ -- 368
+            647 strings with 5960 characters,
+and the built_in function-call counts, 3101 in all, are:
+= -- 274
+> -- 170
+< -- 6
++ -- 56
+- -- 49
+* -- 225
+:= -- 491
+add.period$ -- 26
+call.type$ -- 7
+change.case$ -- 34
+chr.to.int$ -- 7
+cite$ -- 14
+duplicate$ -- 151
+empty$ -- 259
+format.name$ -- 64
+if$ -- 656
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 4
-newline$ -- 28
-num.names$ -- 16
-pop$ -- 47
+missing$ -- 8
+newline$ -- 47
+num.names$ -- 32
+pop$ -- 73
 preamble$ -- 1
-purify$ -- 20
+purify$ -- 29
 quote$ -- 0
-skip$ -- 70
+skip$ -- 117
 stack$ -- 0
-substring$ -- 36
-swap$ -- 12
+substring$ -- 88
+swap$ -- 16
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 39
+type$ -- 67
 warning$ -- 0
-while$ -- 14
+while$ -- 28
 width$ -- 0
-write$ -- 56
-(There was 1 warning)
+write$ -- 103

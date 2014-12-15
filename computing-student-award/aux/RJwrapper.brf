@@ -1,3 +1,7 @@
-\backcite {Brooks-Zhu-Lu-2014}{{1}{2}{chapter.2}}
-\backcite {Efron-1986}{{2}{2.1.3}{equation.2.1.9}}
-\backcite {Vaiter-Deledalle-Peyre-Fadili-Dossal-2012}{{2}{2.1.3}{equation.2.1.9}}
+\backcite {Cleveland-Grosse-1991}{{1}{2}{chapter.2}}
+\backcite {Hastie-Tibshirani-1993}{{1}{2}{chapter.2}}
+\backcite {Brooks-Zhu-Lu-2014}{{1}{2.1}{section.2.1}}
+\backcite {McCullagh-Nelder-1989}{{1}{2.1.1}{subsection.2.1.1}}
+\backcite {Samiuddin-el-Sayyad-1990}{{2}{2.1.2}{equation.2.1.1}}
+\backcite {Akaike-1973}{{2}{2.1.3}{subsection.2.1.3}}
+\backcite {Fotheringham-Brundson-Charlton-2002}{{4}{2.3}{section.2.3}}
